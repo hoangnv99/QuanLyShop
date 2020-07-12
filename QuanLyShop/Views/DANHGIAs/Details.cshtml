@@ -1,0 +1,51 @@
+﻿@model QuanLyShop.Models.DANHGIA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DANHGIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhGia1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhGia1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QUANAO.MaLoHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QUANAO.MaLoHang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDG }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

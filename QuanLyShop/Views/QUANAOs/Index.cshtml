@@ -1,0 +1,70 @@
+﻿@model IEnumerable<QuanLyShop.Models.QUANAO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenQuanAo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhMinhHoa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiSX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KHO.MaNSX)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenQuanAo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MauSac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhMinhHoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiSX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHO.MaNSX)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaQA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaQA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaQA })
+        </td>
+    </tr>
+}
+
+</table>

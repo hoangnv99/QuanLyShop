@@ -1,0 +1,76 @@
+﻿@model QuanLyShop.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string gtinh = "";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NHANVIEN</h4>
+    <hr />
+    <table border="1" cellpadding="0" cellspacing="0" style="font-size:14px;margin-left:50px;">
+        <tr>
+            <td>
+                <table cellpadding="2" cellspacing="10">
+                    <caption><b>THÔNG TIN CHI TIẾT</b></caption>
+                    <tr>
+                        <td rowspan="9"><img src="/Images/@Html.DisplayFor(model => model.AnhMinhHoa)" width="160" height="160" /></td>
+                        
+                        <td>Mã nhân viên:</td>
+                        <td>@Html.DisplayFor(model => model.MaNV)</td>
+                    </tr>
+                    <tr>
+                        <td>Họ nhân viên:</td>
+                        <td>@Html.DisplayFor(model => model.Ho)</td>
+                    </tr>
+                    <tr>
+                        <td>Tên nhân viên:</td>
+                        <td>@Html.DisplayFor(model => model.Ten)</td>
+                    </tr>
+                    <tr>
+                        <td>Ngày sinh:</td>
+                        <td>@Html.DisplayFor(model => model.NgaySinh)</td>
+                    </tr>
+                    <tr>
+
+                        <td>Giới tính:</td>
+                        <td>
+                            @{if (Model.GioiTinh == true)
+                                { gtinh = "Nam"; }
+                                else
+                                { gtinh = "Nữ"; }
+                            }
+                            @gtinh
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Lương:</td>
+                        <td>@Html.DisplayFor(model => model.Luong)</td>
+                    </tr>
+                    <tr>
+                        <td>SDT:</td>
+                        <td>@Html.DisplayFor(model => model.SDT)</td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ:</td>
+                        <td>@Html.DisplayFor(model => model.DiaChi)</td>
+                    </tr>
+                    <tr>
+                        <td>Phòng ban:</td>
+                        <td>@Html.DisplayFor(model => model.PHONGBAN.TenPB)</td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+    <p style="margin-left:50px;">
+        @Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaNV }) |
+        @Html.ActionLink("Quay lại", "Index")
+    </p>
+</div>
+

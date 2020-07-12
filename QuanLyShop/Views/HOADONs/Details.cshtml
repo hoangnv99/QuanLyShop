@@ -1,0 +1,75 @@
+﻿@model QuanLyShop.Models.HOADON
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HOADON</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayMua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayMua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayLapHD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayLapHD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiNhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHANVIEN.Ho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHANVIEN.Ho)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHD }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

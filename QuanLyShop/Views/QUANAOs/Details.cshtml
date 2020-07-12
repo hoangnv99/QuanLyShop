@@ -1,0 +1,75 @@
+﻿@model QuanLyShop.Models.QUANAO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QUANAO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenQuanAo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenQuanAo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaSanPham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaSanPham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MauSac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMinhHoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMinhHoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHO.MaNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHO.MaNSX)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaQA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

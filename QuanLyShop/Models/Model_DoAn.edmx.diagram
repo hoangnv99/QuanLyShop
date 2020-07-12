@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="096fa558d30e4b57bc55086ab1c44acc" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="de_an_web_ver7Model.CHITIETHD" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.DANHGIA" Width="1.5" PointX="10.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.HOADON" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.KHACHHANG" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.KHO" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.NHANVIEN" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.NSX" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.PHONGBAN" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.QUANAO" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="de_an_web_ver7Model.QUANTRI" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__CHITIETHD__MaHD__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__CHITIETHD__MaQA__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__DANHGIA__MaKH__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__DANHGIA__MaQA__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__HOADON__MaKH__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__HOADON__MaNV__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__KHO__MaNSX__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__QUANAO__MaLoHang__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="de_an_web_ver7Model.FK__NHANVIEN__MaPB__29572725" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
