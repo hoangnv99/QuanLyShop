@@ -3,56 +3,37 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "HoTen", rowsPerPage: 5);
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js")
 }
 
-<h2>Index</h2>
+<h2><b>Danh Sách Khách Hàng</b></h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.HoTen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoTen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GioiTinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoDienThoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaKH }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaKH }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaKH })
-        </td>
-    </tr>
+<button>@Html.ActionLink("Tìm Kiếm", "TIMKIEMKH")</button> 
+<div id="gridContent">
+    @ViewBag.TB
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-hover",
+        footerStyle: "grid-footer",
+        fillEmptyRows: true,
+        mode: WebGridPagerModes.Numeric,
+        alternatingRowStyle: "alternatingRowStyle",
+          columns: new[]  // colums in grid
+         {
+            grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+            grid.Column("MaKH","Mã Khách Hàng"), //the model fields to display
+            grid.Column("HoTen","Họ Tên Mã Khách Hàng"  ),
+
+            grid.Column("NgaySinh","Ngày sinh",format:@<text> @item.NgaySinh.ToString("dd/MM/yyyy")</text>),
+            grid.Column("GioiTinh","Giới tính",format: (@item) => @item.GioiTinh==true?"Nam":"Nữ"),
+
+            grid.Column("SoDienThoai","Số Điện Thoại"),
+            grid.Column("DiaChi","Địa chỉ"),
+
+            grid.Column(format: (item) => Html.ActionLink("Cập nhật", "Edit", "KHACHHANGs",new { id = item.MaKH },"KHACHHANGsController")),
+            grid.Column(format: (item) => Html.ActionLink("Xem chi tiết", "Details","KHACHHANGs", new { id = item.MaKH },"KHACHHANGsController")),
+            grid.Column(format: (item) => Html.ActionLink("Xóa", "Delete","KHACHHANGs", new { id = item.MaKH },"KHACHHANGsController")),
 }
-
-</table>
+)
+</div>

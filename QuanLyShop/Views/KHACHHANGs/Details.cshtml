@@ -3,57 +3,60 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string gtinh = "";
 }
+<h4><b>Thong tin Khách Hàng</b></h4>
+    <div>
+        <table border="1" cellpadding="0" cellspacing="0" style="font-size:14px;margin-left:50px;">
+            <tr>
+                <td>
+                    <table cellpadding="2" cellspacing="10" >
+                        <caption><b>THÔNG TIN CHI TIẾT</b></caption>
+                        <tr>
 
-<h2>Details</h2>
 
-<div>
-    <h4>KHACHHANG</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.HoTen)
-        </dt>
+                            <td>Mã nhân viên:</td>
+                            <td>@Html.DisplayFor(model => model.MaKH)</td>
+                        </tr>
+                        <tr>
+                            <td>Họ Tên nhân viên:</td>
+                            <td>@Html.DisplayFor(model => model.HoTen)</td>
+                        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.HoTen)
-        </dd>
+                        <tr>
+                            <td>Ngày sinh:</td>
+                            <td>@Html.DisplayFor(model => model.NgaySinh)</td>
+                        </tr>
+                        <tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </dt>
+                            <td>Giới tính:</td>
+                            <td>
+                                @{if (Model.GioiTinh == true)
+                                    { gtinh = "Nam"; }
+                                    else
+                                    { gtinh = "Nữ"; }
+                                }
+                                @gtinh
+                            </td>
+                        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgaySinh)
-        </dd>
+                        <tr>
+                            <td>SDT:</td>
+                            <td>@Html.DisplayFor(model => model.SoDienThoai)</td>
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ:</td>
+                            <td>@Html.DisplayFor(model => model.DiaChi)</td>
+                        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.GioiTinh)
-        </dd>
+                    </table>
+                </td>
+            </tr>
+        </table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SoDienThoai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }) |
-    @Html.ActionLink("Back to List", "Index")
+    </div>
+<p style="margin-left:50px;">
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.MaKH }) |
+    @Html.ActionLink("Quay lại", "Index")
 </p>
