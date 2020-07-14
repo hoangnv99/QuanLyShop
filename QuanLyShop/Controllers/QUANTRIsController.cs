@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using QuanLyShop.Models;
 
 namespace QuanLyShop.Controllers
@@ -15,13 +16,48 @@ namespace QuanLyShop.Controllers
         private de_an_web_ver7Entities db = new de_an_web_ver7Entities();
 
         // GET: QUANTRIs
+        public bool CheckUser(string username, string password)
+        {
+            var kq = db.QUANTRIs.Where(x => x.Email == username && x.Password == password).ToList();
+            //string hoTen = kq.First().HoTen;
+            if (kq.Count() > 0)
+            {
+                Session["HoTen"] = kq.First().HoTen;
+                return true;
+            }
+            else
+            {
+                Session["HoTen"] = null;
+                return false;
+            }
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(QUANTRI qt)
+        {
+            if (ModelState.IsValid)
+            {
+                if (CheckUser(qt.Email, qt.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(qt.Email, true);
+                    return RedirectToAction("Index", "QUANTRIs/Index");
+                }
+                else
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc tài khoản không đúng.");
+            }
+            return View(qt);
+        }
         public ActionResult Index()
         {
-            return View(db.QUANTRIs.ToList());
+            return View();
         }
-
-        // GET: QUANTRIs/Details/5
-        public ActionResult Details(string id)
+            // GET: QUANTRIs/Details/5
+            public ActionResult Details(string id)
         {
             if (id == null)
             {

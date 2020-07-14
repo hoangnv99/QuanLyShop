@@ -395,6 +395,9 @@
     <Content Include="Views\KHACHHANGs\TIMKIEMKH.cshtml" />
     <Content Include="Views\NHANVIENs\View.cshtml" />
     <Content Include="Views\HOADONs\TIMKIEMHD.cshtml" />
+    <Content Include="Views\Shared\single.cshtml" />
+    <Content Include="Views\QUANTRIs\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
