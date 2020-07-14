@@ -20,7 +20,20 @@ namespace QuanLyShop.Controllers
             var hOADONs = db.HOADONs.Include(h => h.KHACHHANG).Include(h => h.NHANVIEN);
             return View(hOADONs.ToList());
         }
-
+        public ActionResult TIMKIEMHD(string maHD ="", string maKH = "", string maNV = "", string tien = "", string NgayLHD = "")
+        {
+           
+                ViewBag.maHD = maHD;
+                ViewBag.maNV = maNV;
+                ViewBag.maKH = maKH;
+                ViewBag.tien = tien;
+                ViewBag.NgayLHD = NgayLHD;
+                
+                var hoadons = db.HOADONs.SqlQuery("HOADON2_TimKiem'" + maHD + "','" + maKH + "','" + maNV + "','" + tien + "','" + NgayLHD + "'");
+                if (hoadons.Count() == 0)
+                    ViewBag.TB = "Không có thông tin tìm kiếm.";
+                return View(hoadons.ToList());
+        }
         // GET: HOADONs/Details/5
         public ActionResult Details(string id)
         {

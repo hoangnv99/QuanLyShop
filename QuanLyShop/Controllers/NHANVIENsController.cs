@@ -13,13 +13,31 @@ namespace QuanLyShop.Controllers
     public class NHANVIENsController : Controller
     {
         private de_an_web_ver7Entities db = new de_an_web_ver7Entities();
-
+        public ActionResult TIMKIEM(string maNV = "", string gioitinh = "", string ten = "", string diachi = "", string maPB = "")
+        {
+            ViewBag.maNV = maNV;
+            ViewBag.gioitinh = gioitinh;
+            ViewBag.ten = ten;
+            ViewBag.diachi = diachi;
+            ViewBag.maPB = maPB;
+            var nhanViens = db.NHANVIENs.SqlQuery("NHANVIEN2_TimKiem'" + maNV + "','" + gioitinh + "','" + ten + "','" + diachi + "','" + maPB + "'");
+            if (nhanViens.Count() == 0)
+                ViewBag.TB = "Không có thông tin tìm kiếm.";
+            return View(nhanViens.ToList());
+        }
         // GET: NHANVIENs
         public ActionResult Index()
         {
             var nHANVIENs = db.NHANVIENs.Include(n => n.PHONGBAN);
             return View(nHANVIENs.ToList());
         }
+        public ActionResult View()
+        {
+            var aa = db.NHANVIENs.Include(n => n.PHONGBAN);
+            return View(aa.ToList());
+        }
+        
+
 
         // GET: NHANVIENs/Details/5
         public ActionResult Details(string id)

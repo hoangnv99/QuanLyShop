@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "TIMKIEMKH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "MaKH", rowsPerPage: 5);
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js")
+}
+
+<h2>TIMKIEMKH</h2>
+<html>
+<head>
+    <style type="text/css">
+        .grid-footer {
+            color: #000;
+            font: 17px Calibri;
+            text-align: center;
+            font-weight: bold;
+        }
+
+            .grid-footer a {
+                background-color: #ffffff;
+                color: blue;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                padding: 1px 10px 2px 10px;
+            }
+
+                .grid-footer a:active, a:hover {
+                    background-color: #ffffff;
+                    color: #FFAD33;
+                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                }
+
+        .alternatingRowStyle {
+            background-color: aliceblue;
+        }
+
+        table .table1 {
+            text-align: left;
+            margin-left: 0px;
+            margin-right: 0px;
+            width: 800px;
+        }
+
+        .tr, .td {
+            text-align: left;
+        }
+    </style>
+</head>
+<div>
+    @using (Html.BeginForm("TIMKIEMKH", "KHACHHANGs", FormMethod.Get))
+    {
+        @Html.AntiForgeryToken()
+
+
+    <table class="table1" align="center">
+        <tr>
+            <td>
+                <div> Mã Khách Hàng </div>
+            </td>
+            <td>
+                <input type="text" name="MaKH" value="@ViewBag.MaKH" />
+            </td>
+
+        </tr>
+        <tr>
+            <td>Giới Tính</td>
+            <td>
+                @if (@ViewBag.GioiTinh == null)
+                {
+                    <input type="radio" name="GioiTinh" value="1" /><text>Nam</text>
+                    <input type="radio" name="gioiTinh" value="0" /><text>Nữ</text>
+                }
+                else if (@ViewBag.gioiTinh == "1")
+                {
+                    <input type="radio" name="GioiTinh" checked value="1" /><text>Nam</text>
+                    <input type="radio" name="GioiTinh" value="0" /><text>Nữ</text>
+                }
+                else
+                {
+                    <input type="radio" name="GioiTinh" value="1" /><text>Nam</text>
+                    <input type="radio" name="GioiTinh" checked value="0" /><text>Nữ</text>
+                }
+
+
+            </td>
+
+        </tr>
+        <tr>
+            <td>Họ Tên Khách</td>
+            <td>
+                <input type="text" name="Hoten" value="@ViewBag.HoTen" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>Địa Chỉ</td>
+            <td>
+                <input type="text" name="DiaChi" value="@ViewBag.DiaChi" />
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:100px;
+                background-color: blue;color:white" />
+                <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px;width:100px;
+                background-color: blue;color:white" onclick="location.href='@Url.Action("TIMKIEMKH", "KHACHHANGs/TIMKIEMKH")'" />
+
+            </td>
+        </tr>
+    </table>
+    }
+</div>
+
+<div id="gridContent">
+    @ViewBag.TB
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-hover",
+        footerStyle: "grid-footer",
+        fillEmptyRows: true,
+        mode: WebGridPagerModes.Numeric,
+        alternatingRowStyle: "alternatingRowStyle",
+          columns: new[]  // colums in grid
+         {
+         
+            grid.Column("MaKH","Mã Khách Hàng"), //the model fields to display
+            grid.Column("HoTen","Họ Tên Mã Khách Hàng"  ),
+
+            grid.Column("NgaySinh","Ngày sinh",format:@<text> @item.NgaySinh.ToString("dd/MM/yyyy")</text>),
+grid.Column("GioiTinh","Giới tính",format: (@item) => @item.GioiTinh==true?"Nam":"Nữ"),
+
+grid.Column("SoDienThoai","Số Điện Thoại"),
+grid.Column("DiaChi","Địa chỉ"),
+
+grid.Column(format: (item) => Html.ActionLink("Cập nhật", "Edit", "KHACHHANGs",new { id = item.MaKH },"KHACHHANGsController")),
+grid.Column(format: (item) => Html.ActionLink("Xem chi tiết", "Details","KHACHHANGs", new { id = item.MaKH },"KHACHHANGsController")),
+grid.Column(format: (item) => Html.ActionLink("Xóa", "Delete","KHACHHANGs", new { id = item.MaKH },"KHACHHANGsController")),
+}
+)
+</div>
+
+</html>

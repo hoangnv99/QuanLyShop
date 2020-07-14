@@ -19,9 +19,24 @@ namespace QuanLyShop.Controllers
         {
             return View(db.KHACHHANGs.ToList());
         }
+        public ActionResult TIMKIEMKH(string MaKH = "",  string GioiTinh = "", string ten = "", string DiaChi = "")
+        {
 
-        // GET: KHACHHANGs/Details/5
-        public ActionResult Details(string id)
+            
+
+                ViewBag.maHK = MaKH;
+                ViewBag.gioiTinh = GioiTinh;
+                ViewBag.ten = ten;
+
+                ViewBag.diaChi = DiaChi;
+               
+                var khachhangs = db.KHACHHANGs.SqlQuery("KHACHHANG2_TimKiem'" + MaKH + "','" + GioiTinh + "','" + ten + "','" + DiaChi + "'");
+                if (khachhangs.Count() == 0)
+                    ViewBag.TB = "Không có thông tin tìm kiếm.";
+                return View(khachhangs.ToList());
+         }
+            // GET: KHACHHANGs/Details/5
+            public ActionResult Details(string id)
         {
             if (id == null)
             {
