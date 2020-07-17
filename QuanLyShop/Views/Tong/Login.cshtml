@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model QuanLyShop.Models.QUANTRI
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/Layout_trong.cshtml";
+}
+
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+
+
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Latest Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+
+    <link rel="stylesheet" href="~/Login_css/style.css" type="text/css" media="all" />
+    <!-- Style-CSS -->
+    <link href="~/Login_css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+    <!-- //web-fonts -->
+</head>
+
+<body>
+    <div class="main-bg">
+
+        <!-- content -->
+        <div class="sub-main-w3">
+            <div class="bg-content-w3pvt">
+                <div class="top-content-style">
+                    <img src="~/Images/avt.jfif" alt="" height="100px" width="100px" />
+                </div>
+
+                @using (Html.BeginForm("Login", "QUANTRIs", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <center><h4><b>Đăng Nhập</b></h4></center>
+                        <hr />
+                        @Html.ValidationSummary(true, "Đăng nhập không thành công. Kiểm tra lại các thông tin.", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, "Password", htmlAttributes: new { @class = "control-label col-md-3" })
+
+                            <div class="col-md-9">
+
+
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                <input type="password" name="password" class="form-control" style="margin:auto" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Đăng nhập" class="btn btn-default" />
+                            </div>
+                            <div>
+                                @ViewBag.TB
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                <center>
+
+                    <table class="social-nav model-3d-0 footer-social w3_agile_social top_agile_third">
+                        <td class="col-md-3">
+                            <a href="#" class="facebook">
+                                <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+
+                            </a>
+                        </td>
+                        <td class="col-md-3">
+                            <a href="#" class="twitter">
+                                <div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+
+                            </a>
+                        </td>
+                        <td class="col-md-3">
+                            <a href="#" class="instagram">
+                                <div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+
+                            </a>
+                        </td>
+                        <td class="col-md-3">
+                            <a href="#" class="pinterest">
+                                <div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+
+                            </a>
+                        </td>
+                    </table>
+                </center>
+
+            </div>
+        </div>
+        <!-- //content -->
+        <!-- copyright -->
+        <div class="copyright">
+            <h2>
+                Đồ án PT_Web
+            </h2>
+        </div>
+        <!-- //copyright -->
+    </div>
+</body>
+
+</html>
+
+
+
